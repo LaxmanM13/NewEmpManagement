@@ -18,28 +18,37 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         return employeeRepository.findAll();
     }
-
+//
+//    @Override
+//    public Employee getEmpById(String id) {
+//
+//        return employeeRepository.findById(id).get();
+//    }
+//    
     @Override
-    public Employee getEmpById(String id) {
-
-        return employeeRepository.findById(id).get();
+    public Employee getEmpById(String id) throws Exception {
+        Optional<Employee> employee =employeeRepository.findById(id);
+        if(employee.isPresent()){
+            return employee.get();
+        }else {
+            throw new Exception("Product not found");
+        }
     }
+    
+
+  @Override
+  public Employee addEmployee(Employee employee) {
+      return employeeRepository.save(employee);
+  }
+ @Override
+  public Employee updateEmployee(Employee employee) {
+      return employeeRepository.save(employee);
+   }
 
     @Override
-    public Employee addEmployee(Employee employee) {
-
-        return employeeRepository.save(employee);
-    }
-
-    @Override
-    public Employee updateEmployee(Employee employee) {
-
-        return employeeRepository.save(employee);
-    }
-
-    @Override
-    public void deleteEmployee(String  id) {
+    public String deleteEmployee(String  id) {
         employeeRepository.deleteById(id);
+        return "Deleted sucessfully";
 
     }
 }

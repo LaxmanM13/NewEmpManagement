@@ -8,13 +8,12 @@ public interface EmployeeService {
 
 
     public List<Employee> getAllEmployee();
-
-
+    
     public Employee addEmployee(Employee employee);
 
     public Employee updateEmployee(Employee employee);
 
-    public void deleteEmployee(String  id);
+    public String deleteEmployee(String  id);
 
-    Employee getEmpById(String id) ;
+    Employee getEmpById(String id) throws Exception ;
 }
