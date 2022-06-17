@@ -1,7 +1,9 @@
 package com.ajju.service;
 
 import com.ajju.entities.Employee;
+
 import com.ajju.repository.EmployeeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +12,20 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-    @Autowired
-    private EmployeeRepository employeeRepository;
+	
+//	@Autowired
+//	 private EmployeeRepository employeeRepository;
 
-    @Override
+    private final EmployeeRepository employeeRepository;
+   
+	public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+	 
+	this.employeeRepository = employeeRepository;
+}
+	@Override
     public List<Employee> getAllEmployee() {
 
-        return employeeRepository.findAll();
+        return (List<Employee>) employeeRepository.findAll();
     }
 //
 //    @Override
